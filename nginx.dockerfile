@@ -4,4 +4,4 @@ RUN apt update
 
 RUN apt install -y nginx
 
-CMD service nginx start && tail -f /dev/null
+CMD service nginx start && tail -f /var/log/nginx/access.log

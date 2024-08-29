@@ -28,18 +28,18 @@ services:
             - "9000"
         restart: always
         volumes:
-            - ./src/public:/var/www/html
-            
-    mysql:
-        container_name: mysql
-        image: mariadb:10.5
-        expose:
-            - 3306
-        restart: always
-#        volumes:
-#            - ./data/mysql:/var/lib/mysql
-        environment:
-            MYSQL_ROOT_PASSWORD: root
+           - ./src/public:/var/www/html
+
+#    mysql:
+#        container_name: mysql
+#        image: mariadb:10.5
+#        expose:
+#            - 3306
+#        restart: always
+##        volumes:
+##            - ./data/mysql:/var/lib/mysql
+#        environment:
+#            MYSQL_ROOT_PASSWORD: root
             
 #    phpmyadmin:
 #        container_name: phpmyadmin
