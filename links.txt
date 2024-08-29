@@ -1,0 +1,5 @@
+http://localhost:8095
+http://localhost:8095/index.html
+http://localhost:8095/index.php
+http://localhost:8095/archivo.html
+http://localhost:8095/archivo.php

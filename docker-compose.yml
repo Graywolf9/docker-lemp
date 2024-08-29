@@ -4,15 +4,19 @@ services:
 
     nginx:
         container_name: nginx
-        image: nginx:1.21
+          #image: nginx:1.21
+        build:
+          context: .
+          dockerfile: ./nginx.dockerfile
         ports:
-            - "80:80"
-            - "443:443"
+            - "8095:80"
+            - "8443:443"
         restart: always
         volumes:
             - ./src/public:/var/www/html
-            - ./etc/nginx/logs/:/var/log/nginx/
-            - ./etc/nginx/sites-enabled/:/etc/nginx/conf.d/
+              #            - ./etc/nginx/logs/:/var/log/nginx/
+              #            - ./etc/nginx/sites-enabled/:/etc/nginx/conf.d/
+            - ./etc/nginx/sites-enabled/default.conf:/etc/nginx/sites-enabled/default
         depends_on:
             - php-fpm
             - mysql
@@ -32,20 +36,20 @@ services:
         expose:
             - 3306
         restart: always
-        volumes:
-            - ./data/mysql:/var/lib/mysql
+#        volumes:
+#            - ./data/mysql:/var/lib/mysql
         environment:
             MYSQL_ROOT_PASSWORD: root
             
-    phpmyadmin:
-        container_name: phpmyadmin
-        image: phpmyadmin
-        ports:
-            - "8080:80"
-        restart: always
-        depends_on:
-            - mysql
-        environment:
-            PMA_ARBITRARY: 1
-            PMA_HOST: mysql
+#    phpmyadmin:
+#        container_name: phpmyadmin
+#        image: phpmyadmin
+#        ports:
+#            - "8080:80"
+#        restart: always
+#        depends_on:
+#            - mysql
+#        environment:
+#            PMA_ARBITRARY: 1
+#            PMA_HOST: mysql
             
